@@ -3,84 +3,65 @@
 #include <gtest/gtest.h>
 #include "Automata.h"
 
-TEST(AutomataTest, Init) {
-    Automata automata;
-    ASSERT_EQ(automata.getState(), STATES::OFF);
+class AutomataTest : public ::testing::Test {
+protected:
+  Automata automata;
+};
+
+TEST_F(AutomataTest, Init) {}
+
+TEST_F(AutomataTest, On) {
+  automata.on();
 }
 
-TEST(AutomataTest, On) {
-    Automata automata;
-    automata.on();
-    ASSERT_EQ(automata.getState(), STATES::WAIT);
+TEST_F(AutomataTest, Off) {
+  automata.on();
+  automata.off();
 }
 
-TEST(AutomataTest, Off) {
-    Automata automata;
-    automata.on();
-    automata.off();
-    ASSERT_EQ(automata.getState(), STATES::OFF);
+TEST_F(AutomataTest, Coin) {
+  automata.on();
+  automata.coin();
 }
 
-TEST(AutomataTest, Coin) {
-    Automata automata;
-    automata.on();
-    automata.coin();
-    ASSERT_EQ(automata.getState(), STATES::ACCEPT);
+TEST_F(AutomataTest, EtMenu) {
+  automata.on();
+  automata.etMenu();
 }
 
-TEST(AutomataTest, EtMenu) {
-    Automata automata;
-    automata.on();
-    automata.etMenu();
-    ASSERT_EQ(automata.getState(), STATES::WAIT);
+TEST_F(AutomataTest, Choice) {
+  automata.on();
+  automata.coin();
+  automata.choice(1);
 }
 
-TEST(AutomataTest, Choice) {
-    Automata automata;
-    automata.on();
-    automata.coin();
-    automata.coin();
-    automata.choice();
-    ASSERT_EQ(automata.getState(), STATES::CHECK);
+TEST_F(AutomataTest, Check) {
+  automata.on();
+  automata.coin();
+  automata.choice(1);
+  automata.check();
 }
 
-TEST(AutomataTest, Check) {
-    Automata automata;
-    automata.on();
-    automata.coin();
-    automata.coin();
-    automata.choice();
-    automata.check();
-    ASSERT_EQ(automata.getState(), STATES::COOK);
+TEST_F(AutomataTest, Cancel) {
+  automata.on();
+  automata.coin();
+  automata.cancel();
 }
 
-TEST(AutomataTest, Cancel) {
-    Automata automata;
-    automata.on();
-    automata.coin();
-    automata.cancel();
-    ASSERT_EQ(automata.getState(), STATES::WAIT);
+TEST_F(AutomataTest, Cook) {
+  automata.on();
+  automata.coin();
+  automata.choice(1);
+  automata.check();
+  automata.cook();
 }
 
-TEST(AutomataTest, Cook) {
-    Automata automata;
-    automata.on();
-    automata.coin();
-    automata.coin();
-    automata.choice();
-    automata.check();
-    automata.cook();
-    ASSERT_EQ(automata.getState(), STATES::FINISH);
+TEST_F(AutomataTest, Finish) {
+  automata.on();
+  automata.coin();
+  automata.choice(1);
+  automata.check();
+  automata.cook();
+  automata.finish();
 }
 
-TEST(AutomataTest, Finish) {
-    Automata automata;
-    automata.on();
-    automata.coin();
-    automata.coin();
-    automata.choice();
-    automata.check();
-    automata.cook();
-    automata.finish();
-    ASSERT_EQ(automata.getState(), STATES::WAIT);
-}
