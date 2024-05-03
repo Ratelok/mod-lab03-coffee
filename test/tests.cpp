@@ -84,8 +84,3 @@ TEST(AutomataTest, Finish) {
     automata.finish();
     ASSERT_EQ(automata.getState(), STATES::WAIT);
 }
-
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
