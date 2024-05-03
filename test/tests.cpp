@@ -30,16 +30,16 @@ TEST_F(AutomataTest, EtMenu) {
 }
 
 TEST_F(AutomataTest, Choice) {
-  automata.on();
   automata.coin();
   automata.choice(1);
+  ASSERT_EQ(automata.getState(), STATES::CHECK);
 }
 
 TEST_F(AutomataTest, Check) {
-  automata.on();
   automata.coin();
   automata.choice(1);
   automata.check();
+  ASSERT_EQ(automata.getState(), STATES::COOK);
 }
 
 TEST_F(AutomataTest, Cancel) {
@@ -49,19 +49,19 @@ TEST_F(AutomataTest, Cancel) {
 }
 
 TEST_F(AutomataTest, Cook) {
-  automata.on();
   automata.coin();
   automata.choice(1);
   automata.check();
   automata.cook();
+  ASSERT_EQ(automata.getState(), STATES::FINISH);
 }
 
+
 TEST_F(AutomataTest, Finish) {
-  automata.on();
   automata.coin();
   automata.choice(1);
   automata.check();
   automata.cook();
   automata.finish();
+  ASSERT_EQ(automata.getState(), STATES::WAIT);
 }
-
