@@ -62,7 +62,7 @@ void Automata::cancel() {
   if (state != STATES::OFF) {
     std::cout << "Операция отменена. Возврат средств: " << cash << std::endl;
     cash = 0;
-    state = STATES::ON;
+    state = STATES::OFF;
   }
 }
 
@@ -70,14 +70,14 @@ void Automata::cook() {
   if (state == STATES::READY) {
     // Имитация приготовления
     std::cout << "Напиток готов!" << std::endl;
-    state = STATES::OFF;;
+    state = STATES::READY;;
   }
 }
 
 void Automata::finish() {
-  if (state == STATES::OFF) {
+  if (state == STATES::READY) {
     std::cout << "Спасибо за покупку!" << std::endl;
     cash = 0;
-    state = STATES::ON;
+    state = STATES::OFF;
   }
 }

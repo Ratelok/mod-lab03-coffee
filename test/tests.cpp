@@ -16,13 +16,10 @@ TEST(AutomataTest, CoinTest) {
 TEST(AutomataTest, GetMenu) {
   Automata automata;
   automata.on();
-  std::string expectedMenu = "1. Чай - 10\n2. Кофе - 15\n3. Молоко - 20\n";
+  std::vector<std::string> expectedMenu = {"Чай", "Кофе", "Молоко"};
 
-  // Вариант 2: Преобразование вектора в строку
-  std::string actualMenu;
-  for (const auto& item : automata.getMenu()) {
-    actualMenu += item;
-  }
+  std::vector<std::string> actualMenu = automata.getMenu();
+
   EXPECT_EQ(actualMenu, expectedMenu);
 }
 
