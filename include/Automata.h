@@ -1,4 +1,5 @@
-#ifndef AUTOMATA_H
+// Copyright 2023 Fedorov
+#ifndef INCLUDE_AUTOMATA_H_
 #define AUTOMATA_H
 
 #include <string>
@@ -7,7 +8,7 @@
 enum class STATES { OFF, ON, COIN, CHOICE, COOK, READY };
 
 class Automata {
-public:
+ public:
   Automata();
   void on();
   void off();
@@ -22,7 +23,7 @@ public:
   int getCash() const { return cash; }
   STATES getState() const { return state; }
 
-private:
+ private:
   int cash;
   int option;
   std::vector<std::string> menu;
@@ -30,4 +31,4 @@ private:
   STATES state;
 };
 
-#endif
+#endif // INCLUDE_AUTOMATA_H_

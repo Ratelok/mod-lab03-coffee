@@ -1,3 +1,4 @@
+// Copyright 2023 Fedorov
 #include "Automata.h"
 #include <iostream>
 
@@ -24,7 +25,9 @@ void Automata::off() {
 void Automata::coin(int amount) {
   if (state == STATES::ON) {
     cash += amount;
-    std::cout << "Внесено: " << amount << ". Текущий баланс: " << cash << std::endl;
+    std::cout << "Внесено: " << amount
+          << ". Текущий баланс: " << cash
+          << std::endl;
   }
 }
 

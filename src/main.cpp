@@ -1,3 +1,4 @@
+// Copyright 2023 Fedorov
 #include "Automata.h"
 #include <iostream>
 
