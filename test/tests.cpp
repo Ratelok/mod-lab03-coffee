@@ -9,7 +9,7 @@ TEST(AutomataTest, CoinTest) {
   automata.on();
   automata.coin(50);
   EXPECT_EQ(automata.getState(), STATES::ON);
-  EXPECT_EQ(automata.cash, 50);
+  EXPECT_EQ(automata.getCash(), 50);
 }
 
 // Тест на корректное чтение меню

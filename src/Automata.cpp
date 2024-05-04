@@ -1,7 +1,7 @@
 #include "Automata.h"
 #include <iostream>
 
-Automata::Automata() : cash(0), state(STATES::OFF) {
+Automata::Automata() : cash(0), state(STATES::OFF), option(-1) {
   // Загрузка меню и цен (замените на подгрузку из файла)
   menu = {"Чай", "Кофе", "Молоко"};
   prices = {10, 15, 20};
@@ -39,6 +39,7 @@ STATES Automata::getState() {
 void Automata::choice(int option) {
   if (state == STATES::ON && option >= 0 && option < menu.size()) {
     state = STATES::CHOICE;
+    option = choice;
     std::cout << "Выбран напиток: " << menu[option] << std::endl;
   }
 }
