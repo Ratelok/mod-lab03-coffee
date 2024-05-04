@@ -3,65 +3,66 @@
 #include <gtest/gtest.h>
 #include "Automata.h"
 
-class AutomataTest : public ::testing::Test {
-protected:
+
+TEST(AutomataTest, CoinTest) {
   Automata automata;
-};
-
-TEST_F(AutomataTest, Init) {}
-
-TEST_F(AutomataTest, On) {
   automata.on();
+  automata.coin(50);
+  EXPECT_EQ(automata.getState(), STATES::ON);
+  EXPECT_EQ(automata.cash, 50);
 }
 
-TEST_F(AutomataTest, Off) {
+// Тест на корректное чтение меню
+TEST(AutomataTest, GetMenu) {
+  Automata automata;
   automata.on();
-  automata.off();
+  std::string expectedMenu = "1. Чай - 10\n2. Кофе - 15\n3. Молоко - 20\n";
+  EXPECT_EQ(automata.getMenu(), expectedMenu);
 }
 
-TEST_F(AutomataTest, Coin) {
+// Тест на проверку наличия достаточной суммы (успех)
+TEST(AutomataTest, CheckEnough) {
+  Automata automata;
   automata.on();
-  automata.coin();
+  automata.coin(20);
+  EXPECT_TRUE(automata.check(15));
 }
 
-TEST_F(AutomataTest, EtMenu) {
+// Тест на проверку наличия достаточной суммы (неудача)
+TEST(AutomataTest, CheckNotEnough) {
+  Automata automata;
   automata.on();
-  automata.etMenu();
+  automata.coin(10);
+  EXPECT_FALSE(automata.check(15));
 }
 
-TEST_F(AutomataTest, Choice) {
-  automata.coin();
-  automata.choice(1);
-  ASSERT_EQ(automata.getState(), STATES::CHECK);
-}
-
-TEST_F(AutomataTest, Check) {
-  automata.coin();
-  automata.choice(1);
-  automata.check();
-  ASSERT_EQ(automata.getState(), STATES::COOK);
-}
-
-TEST_F(AutomataTest, Cancel) {
+// Тест на отмену сеанса и возврат средств
+TEST(AutomataTest, Cancel) {
+  Automata automata;
   automata.on();
-  automata.coin();
+  automata.coin(25);
   automata.cancel();
+  EXPECT_EQ(automata.getCash(), 0);
+  EXPECT_EQ(automata.getState(), STATES::OFF);
 }
 
-TEST_F(AutomataTest, Cook) {
-  automata.coin();
-  automata.choice(1);
-  automata.check();
+// Тест на имитацию процесса приготовления напитка
+TEST(AutomataTest, Cook) {
+  Automata automata;
+  automata.on();
+  automata.coin(15);
+  automata.choice(2);
   automata.cook();
-  ASSERT_EQ(automata.getState(), STATES::FINISH);
+  EXPECT_EQ(automata.getState(), STATES::READY);
 }
 
-
-TEST_F(AutomataTest, Finish) {
-  automata.coin();
+// Тест на завершение обслуживания и переход в состояние OFF
+TEST(AutomataTest, Finish) {
+  Automata automata;
+  automata.on();
+  automata.coin(10);
   automata.choice(1);
-  automata.check();
   automata.cook();
   automata.finish();
-  ASSERT_EQ(automata.getState(), STATES::WAIT);
+  EXPECT_EQ(automata.getState(), STATES::OFF);
 }
