@@ -41,6 +41,7 @@ void Automata::choice(int option) {
     state = STATES::CHOICE;
     this->option = option - 1;
     std::cout << "Выбран напиток: " << menu[option] << std::endl;
+    state = STATES::COOK;
   }
 }
 
@@ -70,7 +71,7 @@ void Automata::cook() {
   if (state == STATES::COOK) {
     // Имитация приготовления
     std::cout << "Напиток готов!" << std::endl;
-    state = STATES::READY;;
+    state = STATES::READY;
   }
 }
 
