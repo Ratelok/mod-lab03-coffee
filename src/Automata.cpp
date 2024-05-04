@@ -69,12 +69,12 @@ void Automata::cook() {
   if (state == STATES::COOK) {
     // Имитация приготовления
     std::cout << "Напиток готов!" << std::endl;
-    state = STATES::FINISH;
+    state = STATES::OFF;;
   }
 }
 
 void Automata::finish() {
-  if (state == STATES::FINISH) {
+  if (state == STATES::OFF) {
     std::cout << "Спасибо за покупку!" << std::endl;
     cash = 0;
     state = STATES::ON;
