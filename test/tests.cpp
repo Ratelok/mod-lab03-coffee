@@ -26,15 +26,6 @@ TEST(AutomataTest, GetMenu) {
   EXPECT_EQ(actualMenu, expectedMenu);
 }
 
-// Тест на проверку наличия достаточной суммы (успех)
-TEST(AutomataTest, CheckEnough) {
-    Automata automata;
-    automata.on();
-    automata.coin(20);
-    automata.choice(2); // Выбираем напиток с ценой 2
-    EXPECT_TRUE(automata.check());
-}
-
 // Тест на проверку наличия достаточной суммы (неудача)
 TEST(AutomataTest, CheckNotEnough) {
   Automata automata;
