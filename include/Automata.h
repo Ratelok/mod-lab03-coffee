@@ -1,6 +1,6 @@
 // Copyright 2023 Fedorov
 #ifndef INCLUDE_AUTOMATA_H_
-#define AUTOMATA_H
+#define INCLUDE_AUTOMATA_H_
 
 #include <string>
 #include <vector>
