@@ -8,8 +8,8 @@ int main() {
   for (const auto& item : automata.getMenu()) {
     std::cout << item << std::endl;
   }
-  automata.choice(1); // Выбираем кофе
-  automata.check();
+  automata.choice(1);
+  automata.check(15);
   automata.cook();
   automata.finish();
   automata.off();
