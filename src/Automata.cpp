@@ -39,7 +39,7 @@ STATES Automata::getState() {
 void Automata::choice(int option) {
   if (state == STATES::ON && option >= 0 && option < menu.size()) {
     state = STATES::CHOICE;
-    option = choice;
+    option = choice - 1;
     std::cout << "Выбран напиток: " << menu[option] << std::endl;
   }
 }
