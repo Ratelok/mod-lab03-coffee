@@ -44,9 +44,9 @@ void Automata::choice(int option) {
   }
 }
 
-bool Automata::check() {
+bool Automata::check(int price) {
   if (state == STATES::CHOICE) {
-    if (cash >= prices[option]) {
+    if (cash >= price) { // Используйте переданную цену
       state = STATES::COOK;
       std::cout << "Достаточно средств. Приготовление..." << std::endl;
       return true;

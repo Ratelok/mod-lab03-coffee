@@ -15,7 +15,7 @@ public:
   std::vector<std::string> getMenu();
   STATES getState();
   void choice(int option);
-  bool check();
+  bool check(int price);
   void cancel();
   void cook();
   void finish();
