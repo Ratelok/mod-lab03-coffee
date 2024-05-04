@@ -17,7 +17,13 @@ TEST(AutomataTest, GetMenu) {
   Automata automata;
   automata.on();
   std::string expectedMenu = "1. Чай - 10\n2. Кофе - 15\n3. Молоко - 20\n";
-  EXPECT_EQ(automata.getMenu(), expectedMenu);
+
+  // Вариант 2: Преобразование вектора в строку
+  std::string actualMenu;
+  for (const auto& item : automata.getMenu()) {
+    actualMenu += item;
+  }
+  EXPECT_EQ(actualMenu, expectedMenu);
 }
 
 // Тест на проверку наличия достаточной суммы (успех)

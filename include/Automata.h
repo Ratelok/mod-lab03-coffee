@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-enum class STATES { OFF, ON, CHOICE, COOK, FINISH };
+enum class STATES { OFF, ON, COIN, CHOICE, COOK, READY };
 
 class Automata {
 public:
@@ -19,6 +19,8 @@ public:
   void cancel();
   void cook();
   void finish();
+  int getCash() const { return cash; }
+  STATES getState() const { return state; }
 
 private:
   int cash;
